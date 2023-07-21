@@ -13,8 +13,12 @@ const loadPage = () => {
     arrowNav.classList.add("arrowNav");
     const leftArrow = new Image(32, 32);
     leftArrow.src = LeftIcon;
+    leftArrow.classList.add("hourButtons");
+    leftArrow.setAttribute("id", "leftHour");
     const rightArrow = new Image(32, 32);
     rightArrow.src = RightIcon;
+    rightArrow.classList.add("hourButtons");
+    rightArrow.setAttribute("id", "rightHour");
     const hourRow1 = document.createElement("div");
     hourRow1.classList.add("hourRow");
     const hourRow2 = document.createElement("div");
@@ -37,9 +41,18 @@ const loadPage = () => {
     searchButton.innerText = "Search";
     searchButton.classList.add("searchButton");
     const displayDiv = document.createElement("div");
-    const weatherCard = document.createElement("div");
+    displayDiv.classList.add("display");
     const weatherNav = document.createElement("div");
-    
+    weatherNav.classList.add("weatherNav");
+    const leftDayArrow = new Image(32, 32);
+    leftDayArrow.src = LeftIcon;
+    leftDayArrow.classList.add("dayButtons");
+    leftDayArrow.setAttribute("id", "leftDayHour");
+    const rightDayArrow = new Image(32, 32);
+    rightDayArrow.src = RightIcon;
+    rightDayArrow.classList.add("dayButtons");
+    rightDayArrow.setAttribute("id", "rightDayHour");
+
     content.appendChild(leftDiv);
     content.appendChild(rightDiv);
     leftDiv.appendChild(leftImageDiv);
@@ -55,10 +68,11 @@ const loadPage = () => {
     weatherForm.appendChild(searchInput);
     weatherForm.appendChild(searchButton);
     rightDiv.appendChild(displayDiv);
-    displayDiv.appendChild(weatherCard);
     displayDiv.appendChild(weatherNav);
+    weatherNav.appendChild(leftDayArrow);
+    weatherNav.appendChild(rightDayArrow);
 
-    for (let i =0; i < 24; i++) {
+    for (let i = 0; i < 24; i++) {
         let hourBox = document.createElement("div");
         hourBox.setAttribute("data-hourBox", `${i}`);
         if (i < 8) {
@@ -71,6 +85,15 @@ const loadPage = () => {
             hourBox.innerText = "test3";
             hourRow3.appendChild(hourBox);
         }
+    }
+
+    for (let i = 0; i < 7; i++) {
+        let dayBox = document.createElement("div");
+        dayBox.setAttribute("data-dayBox", `${i}`);
+        if (i !== 0) {
+            dayBox.classList.add("hide");
+        }
+        displayDiv.appendChild(dayBox);
     }
 };
 
