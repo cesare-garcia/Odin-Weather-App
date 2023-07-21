@@ -47,11 +47,11 @@ const loadPage = () => {
     const leftDayArrow = new Image(32, 32);
     leftDayArrow.src = LeftIcon;
     leftDayArrow.classList.add("dayButtons");
-    leftDayArrow.setAttribute("id", "leftDayHour");
+    leftDayArrow.setAttribute("id", "leftDay");
     const rightDayArrow = new Image(32, 32);
     rightDayArrow.src = RightIcon;
     rightDayArrow.classList.add("dayButtons");
-    rightDayArrow.setAttribute("id", "rightDayHour");
+    rightDayArrow.setAttribute("id", "rightDay");
 
     content.appendChild(leftDiv);
     content.appendChild(rightDiv);
