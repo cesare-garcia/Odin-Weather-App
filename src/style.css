@@ -1,0 +1,72 @@
+body {
+    margin: 0;
+}
+
+form {
+    margin: 20px;
+    padding: 10px;
+}
+
+#content {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.left {
+    grid-column: 1/5;
+    height: 100vh;
+    background-image: url("/img/animatedEarth.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.leftImage {
+    height: 70vh;
+}
+
+.leftHourly {
+    height: 30vh;
+    position: relative;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.arrowNav {
+    position: absolute;
+    top: 5px;
+    z-index: 2;
+    height: max-content;
+    width: 98%;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.hourRow {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+}
+
+.right {
+    grid-column: 5/6;
+    height: 100vh;
+    background-color: blue;
+}
+
+.hide {
+    display: none;
+}
+
+div[data-hourBox] {
+    height: 130px;
+    width: 90%;
+    background-color: red;
+    place-self: center;
+}
