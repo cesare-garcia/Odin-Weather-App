@@ -5,8 +5,10 @@ const hourCardFactory = (hour, hourF, hourC, hourCIcon) => {
     timeDiv.innerText = hourAdjust[1];
     let fDiv = document.createElement("div");
     fDiv.innerText = `${hourF}°F`;
+    fDiv.classList.add("fahrenheitHours");
     let cDiv = document.createElement("div");
     cDiv.innerText = `${hourC}°C`;
+    cDiv.classList.add("celsiusHours");
     cDiv.classList.add("hideHours");
     let icon = new Image(70, 70);
     icon.src = hourCIcon;

@@ -1,6 +1,5 @@
 import loadPage from './loadPage';
 import pullWeatherData from './pullWeatherDate';
-import showWeatherData from './showWeatherData';
 import './style.css';
 
 loadPage();
@@ -23,15 +22,27 @@ searchButton.addEventListener("click", (e) => {
 
 const toggleButton = document.querySelector(".toggleT");
 toggleButton.addEventListener("click", (e) => {
+    let fahrenheitH = document.querySelectorAll(".fahrenheitHours");
+    let celsiusH = document.querySelectorAll(".celsiusHours");
+    celsiusH.forEach((element) => {
+        if (element.classList.contains("hideHours")) {
+            element.classList.remove("hideHours");
+        } else {
+            element.classList.add("hideHours");
+        }
+    });
+    fahrenheitH.forEach((element) => {
+        if (!element.classList.contains("hideHours")) {
+            element.classList.add("hideHours");
+        } else {
+            element.classList.remove("hideHours");
+        }
+    })
+
+
+
+
     
-
-
-    // if (toggledTemp.classList.contains("hide")) {
-    //     console.log("yes");
-    //     console.log(toggledTemp);
-    // } else if (!toggledTemp.classList.contains("hide")) {
-    //     console.log("no");
-    // }
 });
 
 const hourButtons = document.querySelectorAll(".hourButtons");

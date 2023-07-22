@@ -16,8 +16,9 @@ const dayCardFactory = (counter, location, date, conditionText, cIcon, minC, max
     condition.classList.add("condition");
     condition.innerText = conditionText;
     let celsiusDiv = document.createElement("div");
-    celsiusDiv.classList.add("hide");
     celsiusDiv.classList.add("celsiusDiv");
+    celsiusDiv.classList.add("celsiusHours");
+    celsiusDiv.classList.add("hideHours");
     let maxCelsius = document.createElement("p");
     maxCelsius.classList.add("maxC");
     maxCelsius.innerText = `High: ${maxC}°C`;
@@ -26,6 +27,7 @@ const dayCardFactory = (counter, location, date, conditionText, cIcon, minC, max
     minCelsius.innerText = `Low: ${minC}°C`;
     let fahrDiv = document.createElement("div");
     fahrDiv.classList.add("fahrDiv");
+    fahrDiv.classList.add("fahrenheitHours");
     let maxFahr = document.createElement("p");
     maxFahr.classList.add("maxF");
     maxFahr.innerText = `High: ${maxF}°F`;
