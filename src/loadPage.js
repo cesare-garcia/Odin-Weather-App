@@ -9,6 +9,8 @@ const loadPage = () => {
     leftImageDiv.classList.add("leftImage");
     const leftHourlyDiv = document.createElement("div");
     leftHourlyDiv.classList.add("leftHourly");
+    const leftHeading = document.createElement("h2");
+    leftHeading.innerText = "Today's Hourly Forecast";
     const arrowNav = document.createElement("div");
     arrowNav.classList.add("arrowNav");
     const leftArrow = new Image(32, 32);
@@ -30,6 +32,7 @@ const loadPage = () => {
     const rightDiv = document.createElement("div");
     rightDiv.classList.add("right");
     const weatherForm = document.createElement("form");
+    const searchDiv = document.createElement("div");
     const searchLabel = document.createElement("label");
     searchLabel.setAttribute("for", "searchInput");
     searchLabel.innerText = "City: ";
@@ -37,9 +40,13 @@ const loadPage = () => {
     searchInput.setAttribute("id", "searchInput");
     searchInput.setAttribute("name", "searchInput");
     searchInput.required = true;
+    searchInput.setAttribute("placeholder", "Enter a city name...");
     const searchButton = document.createElement("button");
     searchButton.innerText = "Search";
     searchButton.classList.add("searchButton");
+    const toggleTempButton = document.createElement("button");
+    toggleTempButton.classList.add("toggleT");
+    toggleTempButton.innerText = `Toggle °F/°C`;
     const displayDiv = document.createElement("div");
     displayDiv.classList.add("display");
     const weatherNav = document.createElement("div");
@@ -57,6 +64,7 @@ const loadPage = () => {
     content.appendChild(rightDiv);
     leftDiv.appendChild(leftImageDiv);
     leftDiv.appendChild(leftHourlyDiv);
+    leftHourlyDiv.appendChild(leftHeading);
     leftHourlyDiv.appendChild(arrowNav);
     arrowNav.appendChild(leftArrow);
     arrowNav.appendChild(rightArrow);
@@ -64,37 +72,15 @@ const loadPage = () => {
     leftHourlyDiv.appendChild(hourRow2);
     leftHourlyDiv.appendChild(hourRow3);
     rightDiv.appendChild(weatherForm);
-    weatherForm.appendChild(searchLabel);
-    weatherForm.appendChild(searchInput);
+    weatherForm.appendChild(searchDiv);
+    searchDiv.appendChild(searchLabel);
+    searchDiv.appendChild(searchInput);
     weatherForm.appendChild(searchButton);
+    rightDiv.appendChild(toggleTempButton);
+    rightDiv.appendChild(weatherNav);
     rightDiv.appendChild(displayDiv);
-    displayDiv.appendChild(weatherNav);
     weatherNav.appendChild(leftDayArrow);
     weatherNav.appendChild(rightDayArrow);
-
-    for (let i = 0; i < 24; i++) {
-        let hourBox = document.createElement("div");
-        hourBox.setAttribute("data-hourBox", `${i}`);
-        if (i < 8) {
-            hourBox.innerText = "test1";
-            hourRow1.appendChild(hourBox);
-        } else if (i < 16) {
-            hourBox.innerText = "test2";
-            hourRow2.appendChild(hourBox);
-        } else {
-            hourBox.innerText = "test3";
-            hourRow3.appendChild(hourBox);
-        }
-    }
-
-    for (let i = 0; i < 7; i++) {
-        let dayBox = document.createElement("div");
-        dayBox.setAttribute("data-dayBox", `${i}`);
-        if (i !== 0) {
-            dayBox.classList.add("hide");
-        }
-        displayDiv.appendChild(dayBox);
-    }
 };
 
 export default loadPage;
