@@ -1,0 +1,56 @@
+const dayCardFactory = (counter, location, date, conditionText, cIcon, minC, maxC, minF, maxF, precipitationText) => {
+    const display = document.querySelector(".display");
+    let dayBox = document.createElement("div");
+    dayBox.setAttribute("data-dayBox", `${counter}`);
+    let locationDiv = document.createElement("div");
+    locationDiv.innerText = location;
+    let forecastDate = document.createElement("div");
+    forecastDate.classList.add("fcDate");
+    forecastDate.innerText = date;
+    let forecastConditionDiv = document.createElement("div");
+    forecastConditionDiv.classList.add("fcDiv");
+    let conditionIcon = new Image(180, 180);
+    conditionIcon.classList.add("cIcon");
+    conditionIcon.src = cIcon;
+    let condition = document.createElement("p");
+    condition.classList.add("condition");
+    condition.innerText = conditionText;
+    let celsiusDiv = document.createElement("div");
+    celsiusDiv.classList.add("hide");
+    celsiusDiv.classList.add("celsiusDiv");
+    let maxCelsius = document.createElement("p");
+    maxCelsius.classList.add("maxC");
+    maxCelsius.innerText = `High: ${maxC}°C`;
+    let minCelsius = document.createElement("p");
+    minCelsius.classList.add("minC");
+    minCelsius.innerText = `Low: ${minC}°C`;
+    let fahrDiv = document.createElement("div");
+    fahrDiv.classList.add("fahrDiv");
+    let maxFahr = document.createElement("p");
+    maxFahr.classList.add("maxF");
+    maxFahr.innerText = `High: ${maxF}°F`;
+    let minFahr = document.createElement("p");
+    minFahr.classList.add("minF");
+    minFahr.innerText = `Low: ${minF}°F`;
+    let precipitationDiv = document.createElement("div");
+    precipitationDiv.classList.add("precipitationDiv");
+    precipitationDiv.innerText = `Precipitation (in.): ${precipitationText}`;
+    if (counter !== 0) {
+        dayBox.classList.add("hide");
+    }
+    dayBox.appendChild(locationDiv);
+    dayBox.appendChild(forecastDate);
+    dayBox.appendChild(forecastConditionDiv);
+    forecastConditionDiv.appendChild(conditionIcon);
+    forecastConditionDiv.appendChild(condition);
+    dayBox.appendChild(celsiusDiv);
+    celsiusDiv.appendChild(minCelsius);
+    celsiusDiv.appendChild(maxCelsius);
+    dayBox.appendChild(fahrDiv);
+    fahrDiv.appendChild(minFahr);
+    fahrDiv.appendChild(maxFahr);
+    dayBox.appendChild(precipitationDiv);
+    display.appendChild(dayBox);
+};
+
+export default dayCardFactory;
