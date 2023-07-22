@@ -1,17 +1,37 @@
 import loadPage from './loadPage';
 import pullWeatherData from './pullWeatherDate';
+import showWeatherData from './showWeatherData';
 import './style.css';
 
 loadPage();
+pullWeatherData("austin");
 
 const searchInput = document.querySelector("#searchInput");
 const searchButton = document.querySelector(".searchButton");
 searchButton.addEventListener("click", (e) => {
     if ( searchInput.validity.valid) {
         e.preventDefault();
+        let display = document.querySelector(".display");
+        let hourRows = document.querySelectorAll(".hourRow");
+        display.innerHTML = "";
+        hourRows.forEach((element) => {
+            element.innerHTML = "";
+        })
         let a = pullWeatherData(searchInput.value);
-        console.log(a);
     }
+});
+
+const toggleButton = document.querySelector(".toggleT");
+toggleButton.addEventListener("click", (e) => {
+    
+
+
+    // if (toggledTemp.classList.contains("hide")) {
+    //     console.log("yes");
+    //     console.log(toggledTemp);
+    // } else if (!toggledTemp.classList.contains("hide")) {
+    //     console.log("no");
+    // }
 });
 
 const hourButtons = document.querySelectorAll(".hourButtons");
@@ -42,9 +62,9 @@ hourButtons.forEach((element) => element.addEventListener("click", (e) => {
     }
 }));
 
-let dayBoxes = document.querySelectorAll(`[data-dayBox]`);
 const dayButtons = document.querySelectorAll(".dayButtons");
 dayButtons.forEach((element) => element.addEventListener("click", (e) => {
+    let dayBoxes = document.querySelectorAll(`[data-dayBox]`);
     if (e.target.getAttribute("id") === "leftDay") {
         if (!dayBoxes[0].classList.contains("hide")) {
             dayBoxes[0].classList.add("hide");
@@ -65,7 +85,6 @@ dayButtons.forEach((element) => element.addEventListener("click", (e) => {
             dayBoxes[6].classList.add("hide");
         } else {
             for (let i = dayBoxes.length - 1; i >= 0; i--) {
-                console.log(dayBoxes[i]);
                 if (!dayBoxes[i].classList.contains("hide")) {
                     dayBoxes[i].classList.add("hide");
                     dayBoxes[i+1].classList.remove("hide");
